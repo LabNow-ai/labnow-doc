@@ -132,3 +132,12 @@ body {
 [data-theme='dark'] .prism-code {
   border-color: #393939;
 }
+
+.footer-contact-email {
+  margin-bottom: 0.5rem;
+}
+
+.footer-contact-email img {
+  height: auto;
+  display: inline-block;
+}

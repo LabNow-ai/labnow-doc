@@ -34,7 +34,7 @@ tags: [LabNow, docs]
 - 需要使用Dockerfile而不是通过docker commit来管理镜像，保证镜像构建的可重复性和可维护性；
 - 建议把Dockerfile中进行的操作抽象提取到shell脚本中，用shell脚本函数来定义大部分操作，而在Dockerfile中只执行函数的调用，这样的脚本更易于维护、易读（相较于Dockerfile）、并且可以在其他平台环境执行。
 
-经过多年的迭代，我们不断打磨我们的实践，形成了[LabNow Stack](https://hub.docker.com/r/LabNow)系列镜像，其源代码也完全开源：https://github.com/LabNow/lab-foundation 。这一些列的镜像是我们的理念的实践，并且使用GitHub Actions（这一免费的资源）进行构建和管理。
+经过多年的迭代，我们不断打磨我们的实践，形成了[LabNow Stack](https://hub.docker.com/r/LabNow)系列镜像，其源代码也完全开源：https://github.com/LabNow-ai/lab-foundation 。这一些列的镜像是我们的理念的实践，并且使用GitHub Actions（这一免费的资源）进行构建和管理。
 
 当然您也完全可以构建自己的镜像栈，维护自己的软件供应链体系。
 
@@ -69,16 +69,16 @@ tags: [LabNow, docs]
 
 ### B1. 统一镜像栈的代码管理和CI/CD
 
-我们的源代码完全公开在GitHub上：https://github.com/LabNow/lab-foundation
+我们的源代码完全公开在GitHub上：https://github.com/LabNow-ai/lab-foundation
 
-镜像的构建完全通过（免费的）GitHub Actions来构建：https://github.com/LabNow/lab-foundation/blob/main/.github/workflows/build-docker.yml
+镜像的构建完全通过（免费的）GitHub Actions来构建：https://github.com/LabNow-ai/lab-foundation/blob/main/.github/workflows/build-docker.yml
 
 我们也针对几个不同的开发领域构建几个代码库来分别管理各个系列的镜像栈：
 
-- [lab-foundation](https://github.com/LabNow/lab-foundation)：维护了一些列基础镜像，例如各前后端编程语言环境，以及NVIDIA cuda和torch等基础环境；
-- [lab-data](https://github.com/LabNow/lab-data)：维护了一些列常用数据库（Postgresql及附加插件）、大数据处理组件（spark/flink）等；
-- [lab-dev](https://github.com/LabNow/lab-dev)：维护了一些列开发和线上应用中常用的组件，例如：nginx、网页内IDE（如VSCode和Jupyter）等；
-- [lab-media](https://github.com/LabNow/lab-media)：维护了一些列多媒体/多模态内容处理的组件，如OpenCV、PaddleOCR、HuggingFace Model等。
+- [lab-foundation](https://github.com/LabNow-ai/lab-foundation)：维护了一些列基础镜像，例如各前后端编程语言环境，以及NVIDIA cuda和torch等基础环境；
+- [lab-data](https://github.com/LabNow-ai/lab-data)：维护了一些列常用数据库（Postgresql及附加插件）、大数据处理组件（spark/flink）等；
+- [lab-dev](https://github.com/LabNow-ai/lab-dev)：维护了一些列开发和线上应用中常用的组件，例如：nginx、网页内IDE（如VSCode和Jupyter）等；
+- [lab-media](https://github.com/LabNow-ai/lab-media)：维护了一些列多媒体/多模态内容处理的组件，如OpenCV、PaddleOCR、HuggingFace Model等。
 
 现有代码中，对各种软件包的安装，都会默认选取最新的release/stable版本，因此当有软件更新后，只需重新执行一下GitHub Actions，版本最新版本软件包的镜像就会被构建并推送到镜像库当中。
 
@@ -88,7 +88,7 @@ tags: [LabNow, docs]
 为了更好的在不同环境下使用这些镜像，仍需要在容器启动后，执行特定的个性化配置。
 
 为此，我们定义了一系列脚本，用于处理在不同环境时需要执行的个性化配置操作。
-例如，您的镜像运行在中国大陆地区的互联网上（或者你的个人电脑连接了中国大陆的互联网），[这个脚本](https://github.com/LabNow/lab-foundation/blob/main/docker_atom/work/localize/run-config-mirror-aliyun-pub.sh)执行的个性化的配置将会：
+例如，您的镜像运行在中国大陆地区的互联网上（或者你的个人电脑连接了中国大陆的互联网），[这个脚本](https://github.com/LabNow-ai/lab-foundation/blob/main/docker_atom/work/localize/run-config-mirror-aliyun-pub.sh)执行的个性化的配置将会：
 
 - 在镜像内进行恰当的时区配置；
 - 检测镜像内操作系统环境（Ubuntu/Debian），并把其镜像源修改为aliyun面向互联网的镜像；
@@ -105,7 +105,7 @@ tags: [LabNow, docs]
 
 - 编写一个docker-compose文件来实现上述逻辑，其中容器启动的command设置为：`tail -f /dev/null`，这样容器就会保持启动而不会运行即逝，然后再通过`docker exec -it`进入容器启动代码。
 
-- 如果您希望在网页IDE（包括VSCode、JupyterLab、RStudio）中进行开发，还可以使用我们维护的这个容器来进行开发：https://github.com/LabNow/lab-dev/tree/main/docker_devbox
+- 如果您希望在网页IDE（包括VSCode、JupyterLab、RStudio）中进行开发，还可以使用我们维护的这个容器来进行开发：https://github.com/LabNow-ai/lab-dev/tree/main/docker_devbox
 
 ## C. 总结
 

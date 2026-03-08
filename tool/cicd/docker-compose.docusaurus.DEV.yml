@@ -5,7 +5,7 @@ services:
     container_name: ${CONTAINER_NAME:-dev-docusaurus}
     hostname: ${CONTAINER_NAME:-dev-docusaurus}
     image: "quay.io/labnow/node"
-    restart: unless-stopped
+    restart: always
     environment:
       - PROFILE_LOCALIZE=${PROFILE_LOCALIZE:-aliyun-pub}
       - ENV_PROFILE=${ENV_PROFILE:-DEV}

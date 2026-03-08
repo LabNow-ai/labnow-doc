@@ -3,15 +3,19 @@ name: Deploy Docusaurus Site
 on:
   push:
     branches: [ "main" ]
-
   pull_request:
     branches: [ "main" ]
-
   workflow_dispatch:  # Allows you to run this workflow manually from the Actions tab
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
+
+env:
+  # https://dashboard.algolia.com
+  DOCSEARCH_APP_ID: ${{ secrets.DOCSEARCH_APP_ID }}
+  DOCSEARCH_API_KEY: ${{ secrets.DOCSEARCH_API_KEY }}
+  DOCSEARCH_INDEX_NAME: ${{ vars.DOCSEARCH_INDEX_NAME || 'idx-doc' }}
 
 jobs:
   build:

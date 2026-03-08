@@ -6,7 +6,7 @@ sidebar_position: 01
 
 ## Your Swiss Army Knife for AI & Data Science
 
-In a nutshell, `LabNow` ( [DockerHub](https://hub.docker.com/u/LabNow/) | [GitHub](https://github.com/LabNow/) ) is an **out-of-box Data Science / AI environment and platform** at your fingertip which you would love 💕.
+In a nutshell, `LabNow` ( [DockerHub](https://hub.docker.com/u/LabNow/) | [GitHub](https://github.com/LabNow-ai/) ) is an **out-of-box Data Science / AI environment and platform** at your fingertip which you would love 💕.
 
 With Docker and `LabNow`, you
 
@@ -121,7 +121,7 @@ Access `http://localhost:8888` (or `http://ip-address:8888`) in your browser and
 
 ### FAQ
 
-For a list of FAQ or other information, please refer to the [wiki page](https://github.com/LabNow/docker-images/wiki) of this repo.
+For a list of FAQ or other information, please refer to the [wiki page](https://github.com/LabNow-ai/docker-images/wiki) of this repo.
 
 ### Hardware
 

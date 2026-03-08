@@ -4,7 +4,7 @@ sidebar_position: 12
 
 # LabNow Stacks - Lab Dev
 
-LabNow [Lab Dev](https://github.com/LabNow/lab-dev) provides the following docker image stacks:
+LabNow [Lab Dev](https://github.com/LabNow-ai/lab-dev) provides the following docker image stacks:
 
 ## DevBox - with IDEs like Jupyter/VSCode/RStudio
 

@@ -4,7 +4,7 @@ sidebar_position: 11
 
 # LabNow Stacks - Lab Foundation
 
-LabNow [Lab Foundation](https://github.com/LabNow/lab-foundation) provides the following docker image stacks:
+LabNow [Lab Foundation](https://github.com/LabNow-ai/lab-foundation) provides the following docker image stacks:
 
 ## Base Images
 

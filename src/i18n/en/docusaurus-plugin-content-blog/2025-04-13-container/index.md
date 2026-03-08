@@ -33,7 +33,7 @@ By maintaining a unified container image stack, most of these issues can be remo
 - Use Dockerfiles rather than `docker commit`, so image builds stay reproducible and maintainable.
 - Extract Dockerfile operations into shell scripts and reusable shell functions. Then keep Dockerfiles focused on invoking those functions. This is often easier to read and maintain, and the scripts can run on other platforms too.
 
-After years of iteration, we refined these practices into the [LabNow Stack](https://hub.docker.com/r/LabNow) image series. The source code is fully open source: https://github.com/LabNow/lab-foundation. The images are built and managed through GitHub Actions.
+After years of iteration, we refined these practices into the [LabNow Stack](https://hub.docker.com/r/LabNow) image series. The source code is fully open source: https://github.com/LabNow-ai/lab-foundation. The images are built and managed through GitHub Actions.
 
 You can absolutely build and maintain your own image stack and software supply chain as well.
 
@@ -68,16 +68,16 @@ These requirements can be implemented cleanly with environment-specific `docker-
 
 ### B1. Unified Image Stack Code Management and CI/CD
 
-Our source code is fully public on GitHub: https://github.com/LabNow/lab-foundation
+Our source code is fully public on GitHub: https://github.com/LabNow-ai/lab-foundation
 
-Image builds are fully automated using (free) GitHub Actions: https://github.com/LabNow/lab-foundation/blob/main/.github/workflows/build-docker.yml
+Image builds are fully automated using (free) GitHub Actions: https://github.com/LabNow-ai/lab-foundation/blob/main/.github/workflows/build-docker.yml
 
 We also maintain several repositories for different development domains:
 
-- [lab-foundation](https://github.com/LabNow/lab-foundation): base images for programming languages, NVIDIA CUDA, Torch, and more;
-- [lab-data](https://github.com/LabNow/lab-data): common databases (PostgreSQL and extensions), plus big-data components such as Spark/Flink;
-- [lab-dev](https://github.com/LabNow/lab-dev): common developer and runtime components, such as Nginx and web IDEs (VS Code and Jupyter);
-- [lab-media](https://github.com/LabNow/lab-media): multimedia and multimodal processing components, such as OpenCV, PaddleOCR, and Hugging Face models.
+- [lab-foundation](https://github.com/LabNow-ai/lab-foundation): base images for programming languages, NVIDIA CUDA, Torch, and more;
+- [lab-data](https://github.com/LabNow-ai/lab-data): common databases (PostgreSQL and extensions), plus big-data components such as Spark/Flink;
+- [lab-dev](https://github.com/LabNow-ai/lab-dev): common developer and runtime components, such as Nginx and web IDEs (VS Code and Jupyter);
+- [lab-media](https://github.com/LabNow-ai/lab-media): multimedia and multimodal processing components, such as OpenCV, PaddleOCR, and Hugging Face models.
 
 In current code, package installation generally tracks the latest stable releases. After upstream updates, rerunning GitHub Actions can rebuild and push refreshed images.
 
@@ -85,7 +85,7 @@ In current code, package installation generally tracks the latest stable release
 
 Images may run across different time zones, data centers (for example North America vs. China), and cloud providers (for example Azure, AWS, Aliyun). To support these differences well, some environment-specific configuration is still needed after container startup.
 
-For this purpose, we define scripts for environment-specific personalization. For example, if your image runs on the public internet in mainland China (or your local machine is connected to the mainland internet), [this script](https://github.com/LabNow/lab-foundation/blob/main/docker_atom/work/localize/run-config-mirror-aliyun-pub.sh) can:
+For this purpose, we define scripts for environment-specific personalization. For example, if your image runs on the public internet in mainland China (or your local machine is connected to the mainland internet), [this script](https://github.com/LabNow-ai/lab-foundation/blob/main/docker_atom/work/localize/run-config-mirror-aliyun-pub.sh) can:
 
 - configure timezone settings inside the image;
 - detect OS family (Ubuntu/Debian) and switch apt mirrors to Aliyun mirrors;
@@ -102,7 +102,7 @@ As mentioned in section A2, developers can use these base environments on Window
 
 - Write a `docker-compose` file for the same flow, with container `command: tail -f /dev/null` to keep it running, then enter using `docker exec -it`.
 
-- If you prefer browser-based IDEs (VS Code, JupyterLab, RStudio), you can use this container we maintain: https://github.com/LabNow/lab-dev/tree/main/docker_devbox
+- If you prefer browser-based IDEs (VS Code, JupyterLab, RStudio), you can use this container we maintain: https://github.com/LabNow-ai/lab-dev/tree/main/docker_devbox
 
 ## C. Summary
 
