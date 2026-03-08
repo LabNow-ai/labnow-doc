@@ -76,6 +76,9 @@ export default {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    metadata: [
+      {name: 'algolia-site-verification', content: 'A89E4EE560590E02'},
+    ],
     navbar: {
       title: `${name_brand}`,
       logo: { alt: 'Logo', src: 'img/logo.svg', },
