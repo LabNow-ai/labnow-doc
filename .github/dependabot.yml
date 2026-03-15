@@ -1,0 +1,22 @@
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+
+  - package-ecosystem: "pip"
+    directory: "/src"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    allow:
+      - dependency-type: "direct"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
