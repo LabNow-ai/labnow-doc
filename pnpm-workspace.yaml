@@ -1,0 +1,6 @@
+packages:
+  - 'src'
+
+# pnpm 11+ requires explicit approval for dependency lifecycle scripts.
+allowBuilds:
+  core-js: true
